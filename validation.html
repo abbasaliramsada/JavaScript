@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+        }
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        .container .title ::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            background: linear-gradient(135deg, #9b59b6, #71b7e6);
+        }
+        .container form .user-detail {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+        }
+        form .user-detail .box {
+            margin-bottom: 15px;
+            width: calc(100% /2 - 20px);
+
+        }
+        .user-detail .box input {
+            padding-left: 15px;
+            font-size: 16px;
+            height: 45px;
+            width: 100%;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+        .user-detail .box .details {
+            font-weight: 500;
+        }
+        .user-detail .box input:focus,
+        .user-detail .box input:valid {
+            border-color: #9b59b6;
+        }
+        form .gender-detail .gender-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        form .gender-detail .category {
+            display: flex;
+            width: 80%;
+            margin: 14px 0;
+        }
+        form .gender-detail .category label {
+            margin-right: 40px;
+        }
+        input {
+            margin-top: 5px
+        }
+        .box span {
+            color: red;
+            text-transform: capitalize;
+            margin-left: 10px;
+        }
+        form .btn {
+            height: 45px;
+            margin: 45px 0;
+        }
+        form .btn input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #9b59b6, #71b7e6);
+        }
+        form .btn input:hover {
+            background: linear-gradient(-135deg, #9b59b6, #71b7e6);
+        }
+        @media (max-width: 584px) {
+            .container {
+                max-width: 100%;
+            }
+            form .user-detail .box {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            form .gender-detail .category {
+                width: 100%;
+            }
+            .container form .user-detail {
+                max-height: 300px;
+                overflow-y: scroll;
+            }
+            .user-detail::-webkit-scrollbar {
+                width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Registration Page</h1>
+        </div>
+        <form action="php" onsubmit="return validation()">
+            <div class="user-detail">
+                <div class="box">
+                    <label for="Name" class="details">Name</label> <span id="nameerror"></span>
+                    <input type="text" id="Name" placeholder="Enter Your Name">
+                </div>
+                <div class="box">
+                    <label for="username" class="details">Username</label> <span id="usererror"></span>
+                    <input type="text" id="Username" placeholder="Enter Username">
+                </div>
+                <div class="box">
+                    <label for="Email-Id" class="details">Email-Id</label> <span id="emailerror"></span>
+                    <input type="email" id="Email-Id" placeholder="Enter Your Email-Id">
+                </div>
+                <div class="box">
+                    <label for="Mobile-Number" class="details">Mobile Number</label> <span id="numbererror"></span>
+                    <input type="tel" id="Mobile-Number" placeholder="Enter Your Mobile Number">
+                </div>
+                <div class="box">
+                    <label for="Birth-Date" class="details">Birth Date</label> <span id="birthdateerror"></span>
+                    <input type="date" id="Birth-Date" placeholder="Enter Your Birth Date">
+                </div>
+                <div class="box">
+                    <label for="Password" class="details">Password</label> <span id="passworderror"></span>
+                    <input type="password" id="Password" placeholder="Enter Your Password">
+                </div>
+            </div>
+            <div class="gender-detail">
+                <div class="gender-title">Gender</div>
+                <div class="category">
+                    <label for="Male">
+                        <input type="radio" name="Gender" id="Male" required>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="Female">
+                        <input type="radio" name="Gender" id="Female" required>
+                        <span class="gender">Female</span>
+                    </label>
+                    <label for="Other">
+                        <input type="radio" name="Gender" id="Other" required>
+                        <span class="gender">Other</span>
+                    </label>
+                </div>
+            </div>
+            <div class="btn">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+    <script>
+        let Name = document.getElementById('Name')
+        let Username = document.getElementById('Username')
+        let Email = document.getElementById('Email-Id')
+        let Mobile = document.getElementById('Mobile-Number')
+        let Birthdate = document.getElementById('Birth-Date')
+        let Password = document.getElementById('Password')
+        let nameerror = document.getElementById('nameerror')
+        let usererror = document.getElementById('usererror')
+        let emailerror = document.getElementById('emailerror')
+        let numbererror = document.getElementById('numbererror')
+        let birthdateerror = document.getElementById('birthdateerror')
+        let passworderror = document.getElementById('passworderror')
+
+        console.log(Name);
+        console.log(Username);
+        console.log(Email);
+        console.log(Mobile);
+        console.log(Birthdate);
+        console.log(Password);
+
+        function validation() {
+            if (Name.value == "") {
+                console.log("error");
+                nameerror.innerHTML = "*Please Enter Name"
+                event.preventDefault()
+            }
+            else {
+                nameerror.innerHTML = " "
+            }
+            if (Username.value == "") {
+                console.log("error");
+                usererror.innerHTML = "*Please Enter Username"
+                event.preventDefault()
+            }
+            else {
+                usererror.innerHTML = ""
+            }
+            if (Email.value == "") {
+                console.log("error");
+                emailerror.innerHTML = "*Please Enter Email"
+                event.preventDefault()
+            }
+            else {
+                emailerror.innerHTML = ""
+            }
+            if (Mobile.value == '') {
+                numbererror.innerHTML = "*Please Enter Number"
+                event.preventDefault()
+            }
+            if (Mobile.value.length < 10) {
+                numbererror.innerHTML = "*10 Digit Number"
+                event.preventDefault()
+            }
+            else if (Mobile.value.length > 10) {
+                numbererror.innerHTML = "*10 Digit Number"
+                event.preventDefault()
+            }
+            else {
+                numbererror.innerHTML = ""
+            }
+            if (Birthdate.value == "") {
+                console.log("error");
+                birthdateerror.innerHTML = "*Please Enter Birthdate"
+                event.preventDefault()
+            }
+            else {
+                birthdateerror.innerHTML = ""
+            }
+            if (Password.value == '') {
+                passworderror.innerHTML = "*Please Enter Password"
+                event.preventDefault()
+            }
+            else if (Password.value.length < 8) {
+                passworderror.innerHTML = "*Max 8 char"
+                event.preventDefault()
+            }
+            else {
+                passworderror.innerHTML = ""
+            }
+        }
+    </script>
+</body>
+</html>
