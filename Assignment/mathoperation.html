@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+            text-align: center;
+        }
+        h1{
+            margin-top: 12%;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        form{
+            font-size: 30px;
+        }
+        input{
+            font-size: 30px;
+            text-align: left;
+        }
+        .btn{
+            padding: 20px;
+        }
+        .btn button{
+            padding: 15px 30px;
+            margin:10px 10px ;
+            font-size: 25px;       
+        }
+        .answer span{
+            font-size: 25px;
+        }
+        .answer input{
+            background-color: lightgray;
+        }
+        
+    </style>
+</head>
+<body>
+    <head>
+        <h1>Maths Operations</h1>
+    </head>
+    <form action="">
+        <label for="Enter 1st number">Enter 1st number :</label>
+        <input type="number" placeholder="Number 1" id="num1"><br><br>
+        <label for="Enter 2nd number">Enter 2nd number :</label>
+        <input type="number" placeholder="Number 2" id="num2">
+    </form>
+    <div class="btn">
+        <button id="add">+</button>
+        <button id="sub">-</button>
+        <button id="mul">*</button>
+        <button id="div">/</button>
+        <button id="perc">%</button>
+    </div>
+    <div class="answer">
+        <span>Answer is :</span>
+        <input type="number" readonly id="result">
+    </div>
+
+    <script>
+        let n1 = document.getElementById("num1")
+        let n2 = document.getElementById("num2")
+        let res = document.getElementById("result")
+
+        document.getElementById("add").addEventListener
+        ("click", function () {
+            res.value = parseInt(n1.value)+parseInt(n2.value)
+        })
+        document.getElementById("sub").addEventListener
+        ("click", function () {
+            res.value = parseInt(n1.value)-parseInt(n2.value)
+        })
+        document.getElementById("mul").addEventListener
+        ("click", function () {
+            res.value = parseInt(n1.value)*parseInt(n2.value)
+        })
+        document.getElementById("div").addEventListener
+        ("click", function () {
+            res.value = parseInt(n1.value)/parseInt(n2.value)
+        })
+        document.getElementById("perc").addEventListener
+        ("click", function () {
+            res.value = parseInt(n1.value*n2.value)/100;
+         })
+    </script>
+
+</body>
+</html>
