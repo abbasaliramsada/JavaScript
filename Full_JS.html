@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete JavaScript Guide - A to Z</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 15px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #ffebee;
+            padding: 15px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete JavaScript Guide - A to Z</h1>
+    <p>This comprehensive guide covers all JavaScript concepts from basic to advanced with examples.</p>
+
+    <!-- Table of Contents -->
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+
+    <!-- JavaScript Basics -->
+    <section id="basics">
+        <h2>1. JavaScript Basics</h2>
+        
+        <h3 id="variables">1.1 Variables and Data Types</h3>
+        <div class="example">
+            <h4>Variable Declaration</h4>
+            <pre><code>// Using var (function-scoped, hoisted)
+var name = "John";
+
+// Using let (block-scoped, can be reassigned)
+let age = 30;
+
+// Using const (block-scoped, cannot be reassigned)
+const PI = 3.14159;</code></pre>
+
+            <h4>Data Types</h4>
+            <pre><code>// Primitive Types
+let str = "Hello";          // String
+let num = 42;               // Number
+let bool = true;            // Boolean
+let nothing = null;         // Null
+let notDefined;             // Undefined
+let sym = Symbol('unique'); // Symbol (ES6)
+let bigInt = 123n;          // BigInt (ES2020)
+
+// Object Types
+let obj = { name: "John" }; // Object
+let arr = [1, 2, 3];        // Array
+let func = function() {};   // Function
+let date = new Date();      // Date</code></pre>
+        </div>
+
+        <h3 id="operators">1.2 Operators</h3>
+        <div class="example">
+            <pre><code>// Arithmetic
+let sum = 5 + 3;    // 8
+let diff = 5 - 3;   // 2
+let product = 5 * 3; // 15
+let quotient = 5 / 3; // 1.666...
+let remainder = 5 % 3; // 2
+let exponent = 5 ** 3; // 125 (ES6)
+
+// Assignment
+let x = 10;
+x += 5; // x = x + 5
+
+// Comparison
+5 == '5';  // true (loose equality)
+5 === '5'; // false (strict equality)
+5 != '5';  // false
+5 !== '5'; // true
+
+// Logical
+true && false; // AND - false
+true || false; // OR - true
+!true;         // NOT - false
+
+// Ternary
+let result = (age >= 18) ? 'Adult' : 'Minor';</code></pre>
+        </div>
+
+        <h3 id="type-conversion">1.3 Type Conversion</h3>
+        <div class="example">
+            <pre><code>// Explicit Conversion
+let strNum = "123";
+let numFromStr = Number(strNum); // 123 (number)
+let strFromNum = String(123);    // "123" (string)
+let boolFromNum = Boolean(1);    // true
+
+// Implicit Conversion (Type Coercion)
+"5" + 1;   // "51" (string concatenation)
+"5" - 1;   // 4 (numeric subtraction)
+"5" * "2"; // 10 (numeric multiplication)
+
+// Truthy/Falsy Values
+Boolean("hello"); // true (truthy)
+Boolean("");      // false (falsy)
+Boolean(0);       // false
+Boolean(1);       // true
+Boolean(null);    // false
+Boolean(undefined); // false</code></pre>
+        </div>
+    </section>
+
+    <!-- Control Structures -->
+    <section id="control-structures">
+        <h2>2. Control Structures</h2>
+        
+        <h3 id="conditionals">2.1 Conditionals</h3>
+        <div class="example">
+            <pre><code>// if-else
+if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+
+// else-if
+if (score >= 90) {
+    grade = 'A';
+} else if (score >= 80) {
+    grade = 'B';
+} else {
+    grade = 'C';
+}
+
+// switch
+switch (day) {
+    case 0:
+        dayName = "Sunday";
+        break;
+    case 1:
+        dayName = "Monday";
+        break;
+    // ... other cases
+    default:
+        dayName = "Unknown";
+}</code></pre>
+        </div>
+
+        <h3 id="loops">2.2 Loops</h3>
+        <div class="example">
+            <pre><code>// for loop
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// while loop
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// do-while loop
+let j = 0;
+do {
+    console.log(j);
+    j++;
+} while (j < 5);
+
+// for...of (ES6) - for iterables
+for (const item of [1, 2, 3]) {
+    console.log(item);
+}
+
+// for...in - for object properties
+const obj = { a: 1, b: 2 };
+for (const key in obj) {
+    console.log(key, obj[key]);
+}</code></pre>
+        </div>
+
+        <h3 id="error-handling">2.3 Error Handling</h3>
+        <div class="example">
+            <pre><code>// try-catch-finally
+try {
+    // Code that might throw an error
+    nonExistentFunction();
+} catch (error) {
+    console.error("Error occurred:", error.message);
+} finally {
+    console.log("This always runs");
+}
+
+// Throwing custom errors
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error("Division by zero");
+    }
+    return a / b;
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Functions -->
+    <section id="functions">
+        <h2>3. Functions</h2>
+        
+        <h3 id="function-declaration">3.1 Function Declaration</h3>
+        <div class="example">
+            <pre><code>// Function Declaration (hoisted)
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+// Function Expression
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+// Arrow Function (ES6)
+const greet = (name) => `Hello, ${name}!`;
+
+// Immediately Invoked Function Expression (IIFE)
+(function() {
+    console.log("IIFE runs immediately");
+})();</code></pre>
+        </div>
+
+        <h3 id="function-parameters">3.2 Function Parameters</h3>
+        <div class="example">
+            <pre><code>// Default parameters (ES6)
+function greet(name = "Guest") {
+    return `Hello, ${name}!`;
+}
+
+// Rest parameters (ES6)
+function sum(...numbers) {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+sum(1, 2, 3); // 6
+
+// Destructuring parameters
+function printUser({name, age}) {
+    console.log(`${name} is ${age} years old`);
+}
+printUser({name: "John", age: 30});</code></pre>
+        </div>
+
+        <h3 id="scope-closures">3.3 Scope and Closures</h3>
+        <div class="example">
+            <pre><code>// Lexical Scope
+let globalVar = "global";
+
+function outer() {
+    let outerVar = "outer";
+    
+    function inner() {
+        let innerVar = "inner";
+        console.log(globalVar); // "global"
+        console.log(outerVar);  // "outer"
+        console.log(innerVar);  // "inner"
+    }
+    
+    inner();
+}
+
+// Closure
+function createCounter() {
+    let count = 0;
+    
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+counter(); // 1
+counter(); // 2</code></pre>
+        </div>
+
+        <h3 id="this-keyword">3.4 The 'this' Keyword</h3>
+        <div class="example">
+            <pre><code>// 'this' in different contexts
+const obj = {
+    name: "John",
+    greet: function() {
+        console.log(`Hello, ${this.name}`);
+    }
+};
+obj.greet(); // "Hello, John" - 'this' refers to obj
+
+function globalGreet() {
+    console.log(this); // In non-strict mode: window/global object
+}
+globalGreet();
+
+// Binding 'this'
+const greet = obj.greet;
+greet(); // undefined - 'this' is lost
+
+// Using bind
+const boundGreet = greet.bind(obj);
+boundGreet(); // "Hello, John"
+
+// Arrow functions and 'this'
+const objWithArrow = {
+    name: "John",
+    greet: () => {
+        console.log(`Hello, ${this.name}`); // 'this' is lexical
+    }
+};
+objWithArrow.greet(); // "Hello, undefined"</code></pre>
+        </div>
+    </section>
+
+    <!-- Objects and Prototypes -->
+    <section id="objects">
+        <h2>4. Objects and Prototypes</h2>
+        
+        <h3 id="object-basics">4.1 Object Basics</h3>
+        <div class="example">
+            <pre><code>// Object creation
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+    fullName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+};
+
+// Accessing properties
+person.firstName;       // "John"
+person["lastName"];     // "Doe"
+const prop = "age";
+person[prop];           // 30
+
+// Adding/modifying properties
+person.email = "john@example.com";
+person["country"] = "USA";
+
+// Deleting properties
+delete person.age;</code></pre>
+        </div>
+
+        <h3 id="constructors">4.2 Constructors and Classes</h3>
+        <div class="example">
+            <pre><code>// Constructor Function
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = function() {
+        return `${this.firstName} ${this.lastName}`;
+    };
+}
+const john = new Person("John", "Doe");
+
+// ES6 Classes
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    
+    // Static method
+    static createAnonymous() {
+        return new Person("Anonymous", "");
+    }
+}
+const jane = new Person("Jane", "Doe");
+const anon = Person.createAnonymous();</code></pre>
+        </div>
+
+        <h3 id="prototypes">4.3 Prototypes and Inheritance</h3>
+        <div class="example">
+            <pre><code>// Prototype Chain
+function Animal(name) {
+    this.name = name;
+}
+Animal.prototype.speak = function() {
+    console.log(`${this.name} makes a noise`);
+};
+
+function Dog(name) {
+    Animal.call(this, name); // Call parent constructor
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+Dog.prototype.speak = function() {
+    console.log(`${this.name} barks`);
+};
+
+const dog = new Dog("Rex");
+dog.speak(); // "Rex barks"
+
+// ES6 Class Inheritance
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(`${this.name} makes a noise`);
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        super.speak(); // Call parent method
+        console.log(`${this.name} barks`);
+    }
+}
+
+const dog = new Dog("Rex");
+dog.speak(); // "Rex makes a noise" followed by "Rex barks"</code></pre>
+        </div>
+
+        <h3 id="object-methods">4.4 Object Methods and Properties</h3>
+        <div class="example">
+            <pre><code>const obj = { a: 1, b: 2, c: 3 };
+
+// Object.keys()
+Object.keys(obj); // ["a", "b", "c"]
+
+// Object.values() (ES2017)
+Object.values(obj); // [1, 2, 3]
+
+// Object.entries() (ES2017)
+Object.entries(obj); // [["a", 1], ["b", 2], ["c", 3]]
+
+// Object.assign() (ES6)
+const newObj = Object.assign({}, obj, { d: 4 });
+
+// Object.freeze()
+Object.freeze(obj);
+obj.a = 10; // Error in strict mode or silently fails
+
+// Object.seal()
+Object.seal(obj);
+obj.a = 10; // Allowed (can modify existing properties)
+obj.d = 4;  // Not allowed (can't add new properties)</code></pre>
+        </div>
+    </section>
+
+    <!-- Arrays -->
+    <section id="arrays">
+        <h2>5. Arrays</h2>
+        
+        <h3 id="array-basics">5.1 Array Basics</h3>
+        <div class="example">
+            <pre><code>// Array creation
+const fruits = ["Apple", "Banana"];
+const numbers = new Array(1, 2, 3);
+
+// Accessing elements
+fruits[0]; // "Apple"
+fruits[fruits.length - 1]; // Last element
+
+// Modifying arrays
+fruits.push("Orange"); // Add to end
+fruits.pop();          // Remove from end
+fruits.unshift("Mango"); // Add to beginning
+fruits.shift();          // Remove from beginning
+
+// Multi-dimensional arrays
+const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+matrix[1][2]; // 6</code></pre>
+        </div>
+
+        <h3 id="array-methods">5.2 Array Methods</h3>
+        <div class="example">
+            <pre><code>const numbers = [1, 2, 3, 4, 5];
+
+// Iteration methods
+numbers.forEach((num, index) => {
+    console.log(num, index);
+});
+
+// Transformation methods
+const doubled = numbers.map(num => num * 2);
+const evens = numbers.filter(num => num % 2 === 0);
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+
+// Searching methods
+numbers.find(num => num > 3); // 4
+numbers.findIndex(num => num > 3); // 3
+numbers.includes(3); // true
+numbers.indexOf(3); // 2
+
+// Other methods
+numbers.slice(1, 3); // [2, 3] (doesn't modify original)
+numbers.splice(1, 2, 6, 7); // Removes 2 elements from index 1, adds 6,7
+numbers.sort((a, b) => a - b); // Sorts numerically
+numbers.reverse(); // Reverses array</code></pre>
+        </div>
+
+        <h3 id="array-advanced">5.3 Advanced Array Features</h3>
+        <div class="example">
+            <pre><code>// Spread operator (ES6)
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+
+// Destructuring (ES6)
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+// first = 1, second = 2, rest = [3, 4, 5]
+
+// Array.from() (ES6)
+const arrayLike = { 0: 'a', 1: 'b', length: 2 };
+const realArray = Array.from(arrayLike); // ['a', 'b']
+
+// Array.of() (ES6)
+Array.of(1, 2, 3); // [1, 2, 3] (different from new Array(3))
+
+// Typed Arrays (for binary data)
+const buffer = new ArrayBuffer(16); // 16 bytes
+const int32View = new Int32Array(buffer); // 4 elements (32-bit integers)</code></pre>
+        </div>
+    </section>
+
+    <!-- ES6+ Features -->
+    <section id="es6">
+        <h2>6. ES6+ Features</h2>
+        
+        <h3 id="let-const">6.1 let and const</h3>
+        <div class="example">
+            <pre><code>// Block scoping with let
+function letExample() {
+    if (true) {
+        let x = 10;
+        console.log(x); // 10
+    }
+    console.log(x); // ReferenceError: x is not defined
+}
+
+// Constants with const
+const PI = 3.14159;
+PI = 3.14; // TypeError: Assignment to constant variable
+
+// const with objects
+const person = { name: "John" };
+person.name = "Jane"; // Allowed (property can change)
+person = { name: "Jane" }; // Error (can't reassign const)</code></pre>
+        </div>
+
+        <h3 id="template-literals">6.2 Template Literals</h3>
+        <div class="example">
+            <pre><code>const name = "John";
+const age = 30;
+
+// Basic interpolation
+const greeting = `Hello, ${name}! You are ${age} years old.`;
+
+// Multi-line strings
+const message = `
+    Dear ${name},
+    Thank you for your purchase.
+    Your order will arrive in 3-5 business days.
+`;
+
+// Tagged templates
+function highlight(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        return `${result}${str}<span class="highlight">${values[i] || ''}</span>`;
+    }, '');
+}
+const highlighted = highlight`Hello ${name}, you are ${age} years old.`;</code></pre>
+        </div>
+
+        <h3 id="destructuring">6.3 Destructuring</h3>
+        <div class="example">
+            <pre><code>// Object destructuring
+const person = { name: "John", age: 30, country: "USA" };
+const { name, age } = person;
+console.log(name, age); // "John" 30
+
+// Array destructuring
+const numbers = [1, 2, 3, 4];
+const [first, second, ...rest] = numbers;
+console.log(first, second, rest); // 1 2 [3, 4]
+
+// Parameter destructuring
+function greet({ name, age }) {
+    console.log(`Hello ${name}, you are ${age}`);
+}
+greet(person); // "Hello John, you are 30"
+
+// Default values
+const { name, age, city = "New York" } = person;</code></pre>
+        </div>
+
+        <h3 id="spread-rest">6.4 Spread and Rest Operators</h3>
+        <div class="example">
+            <pre><code>// Spread operator for arrays
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+
+// Spread operator for objects (ES2018)
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const merged = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
+
+// Rest parameters
+function sum(...numbers) {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+sum(1, 2, 3); // 6
+
+// Rest pattern in destructuring
+const [first, ...rest] = [1, 2, 3, 4];
+console.log(first, rest); // 1 [2, 3, 4]</code></pre>
+        </div>
+
+        <h3 id="modules">6.5 Modules</h3>
+        <div class="example">
+            <pre><code>// math.js (exporting)
+export const PI = 3.14159;
+
+export function sum(a, b) {
+    return a + b;
+}
+
+export default class Calculator {
+    // ...
+}
+
+// app.js (importing)
+import Calculator, { PI, sum } from './math.js';
+
+// Dynamic imports
+async function loadModule() {
+    const module = await import('./math.js');
+    module.sum(2, 3);
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Asynchronous JavaScript -->
+    <section id="async">
+        <h2>7. Asynchronous JavaScript</h2>
+        
+        <h3 id="callbacks">7.1 Callbacks</h3>
+        <div class="example">
+            <pre><code>// Basic callback
+function fetchData(callback) {
+    setTimeout(() => {
+        callback("Data received");
+    }, 1000);
+}
+
+fetchData((data) => {
+    console.log(data); // "Data received" after 1 second
+});
+
+// Callback hell (pyramid of doom)
+fetchUser(userId, (user) => {
+    fetchPosts(user.id, (posts) => {
+        fetchComments(posts[0].id, (comments) => {
+            console.log(comments);
+        });
+    });
+});</code></pre>
+        </div>
+
+        <h3 id="promises">7.2 Promises</h3>
+        <div class="example">
+            <pre><code>// Creating a promise
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = Math.random() > 0.5;
+            if (success) {
+                resolve("Data received");
+            } else {
+                reject("Error fetching data");
+            }
+        }, 1000);
+    });
+}
+
+// Consuming a promise
+fetchData()
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
+    .finally(() => console.log("Done"));
+
+// Promise chaining
+fetchUser(userId)
+    .then(user => fetchPosts(user.id))
+    .then(posts => fetchComments(posts[0].id))
+    .then(comments => console.log(comments))
+    .catch(error => console.error(error));
+
+// Promise.all
+Promise.all([fetchUser(), fetchPosts()])
+    .then(([user, posts]) => {
+        console.log(user, posts);
+    });
+
+// Promise.race
+Promise.race([fetchFast(), fetchSlow()])
+    .then(result => {
+        console.log(result); // Result of whichever finishes first
+    });</code></pre>
+        </div>
+
+        <h3 id="async-await">7.3 Async/Await</h3>
+        <div class="example">
+            <pre><code>// Async function
+async function fetchUserData() {
+    try {
+        const user = await fetchUser(userId);
+        const posts = await fetchPosts(user.id);
+        const comments = await fetchComments(posts[0].id);
+        console.log(comments);
+    } catch (error) {
+        console.error(error);
+    } finally {
+        console.log("Done");
+    }
+}
+
+// IIFE with async/await
+(async () => {
+    const data = await fetchData();
+    console.log(data);
+})();
+
+// Parallel execution with Promise.all
+async function fetchAllData() {
+    const [user, posts] = await Promise.all([
+        fetchUser(userId),
+        fetchPosts(userId)
+    ]);
+    console.log(user, posts);
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- DOM Manipulation -->
+    <section id="dom">
+        <h2>8. DOM Manipulation</h2>
+        
+        <h3 id="dom-selection">8.1 DOM Selection</h3>
+        <div class="example">
+            <pre><code>// Selecting elements
+const el = document.getElementById('myId');
+const els = document.getElementsByClassName('myClass');
+const tags = document.getElementsByTagName('div');
+
+// Query Selector (more modern)
+const firstMatch = document.querySelector('.myClass');
+const allMatches = document.querySelectorAll('div.myClass');
+
+// Traversing the DOM
+const parent = el.parentNode;
+const children = el.children;
+const firstChild = el.firstElementChild;
+const nextSibling = el.nextElementSibling;</code></pre>
+        </div>
+
+        <h3 id="dom-modification">8.2 DOM Modification</h3>
+        <div class="example">
+            <pre><code>// Creating elements
+const newDiv = document.createElement('div');
+newDiv.textContent = "Hello World";
+newDiv.className = "box";
+newDiv.setAttribute('data-id', '123');
+
+// Adding to DOM
+document.body.appendChild(newDiv);
+parentElement.insertBefore(newDiv, referenceElement);
+
+// Modifying styles
+el.style.color = "blue";
+el.style.backgroundColor = "#f0f0f0";
+
+// Modifying classes
+el.classList.add('active');
+el.classList.remove('inactive');
+el.classList.toggle('visible');
+
+// Modifying attributes
+el.setAttribute('title', 'Tooltip');
+const title = el.getAttribute('title');
+el.removeAttribute('title');
+
+// Removing elements
+el.remove(); // Modern way
+parent.removeChild(el); // Older way</code></pre>
+        </div>
+
+        <h3 id="events">8.3 Events</h3>
+        <div class="example">
+            <pre><code>// Event listeners
+const button = document.querySelector('button');
+
+// Adding event listener
+button.addEventListener('click', function(event) {
+    console.log('Button clicked', event);
+});
+
+// Removing event listener
+function handleClick() {
+    console.log('Clicked once');
+    button.removeEventListener('click', handleClick);
+}
+button.addEventListener('click', handleClick);
+
+// Event delegation
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.item')) {
+        console.log('Item clicked', event.target);
+    }
+});
+
+// Common events
+element.addEventListener('mouseover', () => {});
+element.addEventListener('keydown', () => {});
+element.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form submission
+});
+window.addEventListener('resize', () => {});
+window.addEventListener('load', () => {});</code></pre>
+        </div>
+    </section>
+
+    <!-- Advanced Concepts -->
+    <section id="advanced">
+        <h2>9. Advanced Concepts</h2>
+        
+        <h3 id="hoisting">9.1 Hoisting</h3>
+        <div class="example">
+            <pre><code>// Variable hoisting
+console.log(x); // undefined (not ReferenceError)
+var x = 5;
+
+// Function hoisting
+sayHello(); // "Hello" (works)
+function sayHello() {
+    console.log("Hello");
+}
+
+// let/const hoisting (different behavior)
+console.log(y); // ReferenceError
+let y = 5;</code></pre>
+        </div>
+
+        <h3 id="strict-mode">9.2 Strict Mode</h3>
+        <div class="example">
+            <pre><code>'use strict';
+
+// Changes in strict mode
+x = 3.14; // Error (x not declared)
+delete Object.prototype; // Error
+function fn(a, a) { } // Error (duplicate parameter name)
+const obj = {
+    get x() { return 0 },
+    set x(val) { } // Error if both have same name
+};
+with (Math) { x = cos(2) }; // Error (with statement not allowed)</code></pre>
+        </div>
+
+        <h3 id="generators-iterators">9.3 Generators and Iterators</h3>
+        <div class="example">
+            <pre><code>// Iterator protocol
+const myIterable = {
+    [Symbol.iterator]: function* () {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+};
+
+for (const value of myIterable) {
+    console.log(value); // 1, 2, 3
+}
+
+// Generator function
+function* idGenerator() {
+    let id = 1;
+    while (true) {
+        yield id++;
+    }
+}
+
+const gen = idGenerator();
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2</code></pre>
+        </div>
+
+        <h3 id="proxies-reflect">9.4 Proxies and Reflect</h3>
+        <div class="example">
+            <pre><code>// Proxy
+const target = {
+    message: "hello",
+    name: "John"
+};
+
+const handler = {
+    get(target, prop, receiver) {
+        if (prop === 'message') {
+            return target[prop].toUpperCase();
+        }
+        return Reflect.get(...arguments);
+    },
+    set(target, prop, value) {
+        if (prop === 'age' && typeof value !== 'number') {
+            throw new TypeError('Age must be a number');
+        }
+        return Reflect.set(...arguments);
+    }
+};
+
+const proxy = new Proxy(target, handler);
+console.log(proxy.message); // "HELLO"
+proxy.age = 30; // OK
+proxy.age = "30"; // TypeError</code></pre>
+        </div>
+
+        <h3 id="weakmaps-weakset">9.5 WeakMap and WeakSet</h3>
+        <div class="example">
+            <pre><code>// WeakMap
+let obj1 = {};
+let obj2 = {};
+
+const weakMap = new WeakMap();
+weakMap.set(obj1, "private data");
+console.log(weakMap.get(obj1)); // "private data"
+
+obj1 = null; // obj1 can be garbage collected now
+
+// WeakSet
+const weakSet = new WeakSet();
+weakSet.add(obj2);
+console.log(weakSet.has(obj2)); // true
+
+obj2 = null; // obj2 can be garbage collected</code></pre>
+        </div>
+    </section>
+
+    <!-- Browser APIs -->
+    <section id="browser-apis">
+        <h2>10. Browser APIs</h2>
+        
+        <h3 id="storage">10.1 Web Storage</h3>
+        <div class="example">
+            <pre><code>// localStorage (persistent)
+localStorage.setItem('username', 'john_doe');
+const username = localStorage.getItem('username');
+localStorage.removeItem('username');
+localStorage.clear();
+
+// sessionStorage (session-only)
+sessionStorage.setItem('token', 'abc123');
+
+// Cookies
+document.cookie = "username=John; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+const cookies = document.cookie.split('; ');</code></pre>
+        </div>
+
+        <h3 id="fetch-api">10.2 Fetch API</h3>
+        <div class="example">
+            <pre><code>// Basic GET request
+fetch('https://api.example.com/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
+// POST request with options
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer token123'
+    },
+    body: JSON.stringify({ key: 'value' })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+// Using async/await
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+        </div>
+
+        <h3 id="web-workers">10.3 Web Workers</h3>
+        <div class="example">
+            <pre><code>// main.js
+const worker = new Worker('worker.js');
+
+worker.postMessage('Start working');
+
+worker.onmessage = function(event) {
+    console.log('Message from worker:', event.data);
+};
+
+worker.onerror = function(error) {
+    console.error('Worker error:', error);
+};
+
+// worker.js
+self.onmessage = function(event) {
+    console.log('Message from main:', event.data);
+    
+    // Simulate intensive task
+    let result = 0;
+    for (let i = 0; i < 1000000000; i++) {
+        result += Math.sqrt(i);
+    }
+    
+    self.postMessage(result);
+};</code></pre>
+        </div>
+
+        <h3 id="geolocation">10.4 Geolocation API</h3>
+        <div class="example">
+            <pre><code>if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log('Latitude:', position.coords.latitude);
+            console.log('Longitude:', position.coords.longitude);
+        },
+        (error) => {
+            console.error('Error getting location:', error.message);
+        },
+        { enableHighAccuracy: true, timeout: 5000 }
+    );
+} else {
+    console.log('Geolocation not supported');
+}</code></pre>
+        </div>
+
+        <h3 id="canvas">10.5 Canvas API</h3>
+        <div class="example">
+            <pre><code>const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// Drawing
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 150, 100);
+
+ctx.beginPath();
+ctx.arc(200, 75, 50, 0, 2 * Math.PI);
+ctx.stroke();
+
+// Text
+ctx.font = '30px Arial';
+ctx.fillStyle = 'red';
+ctx.fillText('Hello Canvas', 50, 180);
+
+// Images
+const img = new Image();
+img.onload = function() {
+    ctx.drawImage(img, 250, 50, 100, 100);
+};
+img.src = 'image.png';</code></pre>
+        </div>
+    </section>
+
+    <!-- Modern JavaScript -->
+    <section id="modern-js">
+        <h2>11. Modern JavaScript (ES2016-ES2023)</h2>
+        
+        <h3 id="es2016-2017">11.1 ES2016 & ES2017</h3>
+        <div class="example">
+            <pre><code>// ES2016
+// Array.prototype.includes
+[1, 2, 3].includes(2); // true
+
+// Exponentiation operator
+2 ** 3; // 8 (same as Math.pow(2, 3))
+
+// ES2017
+// Async functions (covered earlier)
+// Object.values/Object.entries
+Object.values({a: 1, b: 2}); // [1, 2]
+Object.entries({a: 1, b: 2}); // [['a', 1], ['b', 2]]
+
+// String padding
+'5'.padStart(3, '0'); // "005"
+'5'.padEnd(3, '0');   // "500"
+
+// SharedArrayBuffer and Atomics (for Web Workers)
+// Trailing commas in function parameters</code></pre>
+        </div>
+
+        <h3 id="es2018">11.2 ES2018</h3>
+        <div class="example">
+            <pre><code>// Asynchronous iteration
+async function process(array) {
+    for await (const item of array) {
+        console.log(item);
+    }
+}
+
+// Rest/Spread properties
+const obj = {a: 1, b: 2, c: 3};
+const {a, ...rest} = obj;
+console.log(rest); // {b: 2, c: 3}
+
+const newObj = {...obj, d: 4}; // {a: 1, b: 2, c: 3, d: 4}
+
+// Promise.prototype.finally
+fetch(url)
+    .then(response => response.json())
+    .catch(error => console.error(error))
+    .finally(() => console.log('Done'));
+
+// RegExp improvements
+const regex = /\p{Emoji}/u; // Unicode property escapes
+'😊'.match(regex); // matches</code></pre>
+        </div>
+
+        <h3 id="es2019">11.3 ES2019</h3>
+        <div class="example">
+            <pre><code>// Array.prototype.flat and flatMap
+[1, [2, [3]]].flat();      // [1, 2, [3]]
+[1, [2, [3]]].flat(2);     // [1, 2, 3]
+[1, 2, 3].flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6]
+
+// Object.fromEntries
+const entries = [['a', 1], ['b', 2]];
+Object.fromEntries(entries); // {a: 1, b: 2}
+
+// String.prototype.trimStart/trimEnd
+'  hello  '.trimStart(); // 'hello  '
+'  hello  '.trimEnd();   // '  hello'
+
+// Optional catch binding
+try {
+    // ...
+} catch { // no parameter needed if unused
+    // ...
+}
+
+// Function.prototype.toString revision
+function foo() { /* comment */ }
+foo.toString(); // includes the comment</code></pre>
+        </div>
+
+        <h3 id="es2020">11.4 ES2020</h3>
+        <div class="example">
+            <pre><code>// BigInt
+const bigNum = 123456789012345678901234567890n;
+bigNum + 1n; // 123456789012345678901234567891n
+
+// Dynamic import (covered earlier)
+// Nullish coalescing operator
+const value = null ?? 'default'; // 'default'
+const value = 0 ?? 'default';    // 0 (not 'default')
+
+// Optional chaining
+const street = user?.address?.street; // undefined if any is null/undefined
+
+// Promise.allSettled
+Promise.allSettled([promise1, promise2])
+    .then(results => {
+        results.forEach(result => {
+            if (result.status === 'fulfilled') {
+                console.log(result.value);
+            } else {
+                console.error(result.reason);
+            }
+        });
+    });
+
+// globalThis
+globalThis === window; // true in browsers
+globalThis === global; // true in Node.js</code></pre>
+        </div>
+
+        <h3 id="es2021-2023">11.5 ES2021-2023</h3>
+        <div class="example">
+            <pre><code>// ES2021
+// Logical assignment operators
+a ||= b; // a = a || b
+a &&= b; // a = a && b
+a ??= b; // a = a ?? b
+
+// String.prototype.replaceAll
+'hello world'.replaceAll('l', 'L'); // 'heLLo worLd'
+
+// Numeric separators
+const billion = 1_000_000_000; // Easier to read
+
+// ES2022
+// Class fields and private methods
+class Counter {
+    #count = 0; // Private field
+    
+    #increment() { // Private method
+        this.#count++;
+    }
+    
+    get value() {
+        return this.#count;
+    }
+}
+
+// Top-level await
+const data = await fetchData(); // Now allowed in modules
+
+// Array.prototype.at
+[1, 2, 3].at(-1); // 3 (last element)
+
+// ES2023
+// Array find from last
+[1, 2, 3, 2].findLast(x => x === 2); // 2 (last occurrence)
+
+// Hashbang support (for CLI scripts)
+#!/usr/bin/env node</code></pre>
+        </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section id="best-practices">
+        <h2>12. JavaScript Best Practices</h2>
+        
+        <h3 id="coding-style">12.1 Coding Style</h3>
+        <div class="example">
+            <pre><code>// Consistent naming
+const userName = "John"; // camelCase for variables
+function calculateTotal() {} // camelCase for functions
+class UserAccount {} // PascalCase for classes
+const API_KEY = "123"; // UPPER_SNAKE_CASE for constants
+
+// Use strict equality
+if (value === 42) {} // Instead of ==
+
+// Early returns
+function processData(data) {
+    if (!data) return; // Early exit for invalid data
+    
+    // Main logic here
+}
+
+// Avoid global variables
+(function() {
+    // Your code here (creates a scope)
+})();
+
+// Use template literals
+const message = `Hello ${name}, welcome back!`;
+
+// Destructure objects
+const { firstName, lastName } = user;</code></pre>
+        </div>
+
+        <h3 id="error-handling-best">12.2 Error Handling</h3>
+        <div class="example">
+            <pre><code>// Always handle promise rejections
+fetchData()
+    .then(data => process(data))
+    .catch(error => {
+        console.error('Failed:', error);
+        // Consider showing user-friendly message
+    });
+
+// Use specific error types
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+    }
+}
+
+// Throw meaningful errors
+function validateInput(input) {
+    if (!input) {
+        throw new ValidationError("Input is required");
+    }
+}
+
+// Central error handling
+window.onerror = function(message, source, lineno, colno, error) {
+    // Log to error tracking service
+    logErrorToService(error);
+    return true; // Prevent default browser error handling
+};</code></pre>
+        </div>
+
+        <h3 id="performance">12.3 Performance</h3>
+        <div class="example">
+            <pre><code>// Avoid unnecessary DOM access
+// Bad: Accesses DOM in loop
+for (let i = 0; i < 100; i++) {
+    document.getElementById('result').innerHTML += i;
+}
+
+// Good: Build string first, then update DOM once
+let html = '';
+for (let i = 0; i < 100; i++) {
+    html += i;
+}
+document.getElementById('result').innerHTML = html;
+
+// Debounce expensive operations
+function debounce(func, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+window.addEventListener('resize', debounce(() => {
+    console.log('Window resized');
+}, 300));
+
+// Use Web Workers for CPU-intensive tasks
+// (Example shown in Web Workers section)
+
+// Optimize loops
+const arr = [/* large array */];
+const len = arr.length; // Cache length
+for (let i = 0; i < len; i++) {
+    // ...
+}</code></pre>
+        </div>
+
+        <h3 id="security">12.4 Security</h3>
+        <div class="example">
+            <pre><code>// Sanitize user input
+function sanitize(input) {
+    return input.replace(/&lt;script&gt;.*?&lt;\/script&gt;/gi, '');
+}
+
+// Use Content Security Policy (CSP) headers
+// Example CSP header:
+// Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'
+
+// Avoid eval()
+// Bad:
+eval('console.log("Hello")');
+
+// Good:
+const func = new Function('console.log("Hello")');
+func(); // Still not ideal, but better than eval
+
+// Protect against XSS
+document.getElementById('output').textContent = userInput;
+// Instead of:
+// document.getElementById('output').innerHTML = userInput;
+
+// Use HTTPS for all requests
+// Validate data on both client and server side</code></pre>
+        </div>
+    </section>
+
+    <!-- JavaScript Ecosystem -->
+    <section id="ecosystem">
+        <h2>13. JavaScript Ecosystem</h2>
+        
+        <h3 id="npm">13.1 npm and Package Management</h3>
+        <div class="example">
+            <pre><code>// package.json example
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "A sample project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "webpack": "^5.52.0"
+  }
+}
+
+// Common npm commands
+// npm init - Create a new package.json
+// npm install package-name - Install a package
+// npm install -D package-name - Install as dev dependency
+// npm update - Update packages
+// npm run script-name - Run a script</code></pre>
+        </div>
+
+        <h3 id="tooling">13.2 Build Tools and Bundlers</h3>
+        <div class="example">
+            <pre><code>// Webpack configuration example (webpack.config.js)
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+};
+
+// Babel configuration example (.babelrc)
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
+}</code></pre>
+        </div>
+
+        <h3 id="testing">13.3 Testing</h3>
+        <div class="example">
+            <pre><code>// Jest test example
+function sum(a, b) {
+  return a + b;
+}
+
+describe('sum function', () => {
+  test('adds 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(3);
+  });
+
+  test('adds negative numbers correctly', () => {
+    expect(sum(-1, -2)).toBe(-3);
+  });
+});
+
+// React Testing Library example
+import { render, screen } from '@testing-library/react';
+import Button from './Button';
+
+test('renders button with text', () => {
+  render(&lt;Button&gt;Click me&lt;/Button&gt;);
+  const buttonElement = screen.getByText(/click me/i);
+  expect(buttonElement).toBeInTheDocument();
+});
+
+// End-to-end testing with Cypress
+describe('Login Page', () => {
+  it('should login with valid credentials', () => {
+    cy.visit('/login');
+    cy.get('#username').type('testuser');
+    cy.get('#password').type('password123');
+    cy.get('form').submit();
+    cy.url().should('include', '/dashboard');
+  });
+});</code></pre>
+        </div>
+
+        <h3 id="frameworks">13.4 Frameworks and Libraries</h3>
+        <div class="example">
+            <pre><code>// React component example
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Vue component example
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;You clicked {{ count }} times&lt;/p&gt;
+    &lt;button @click="increment"&gt;Click me&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    }
+  }
+}
+&lt;/script&gt;
+
+// Angular component example
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    &lt;div&gt;
+      &lt;p&gt;You clicked {{ count }} times&lt;/p&gt;
+      &lt;button (click)="increment()"&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class CounterComponent {
+  count = 0;
+
+  increment() {
+    this.count++;
+  }
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion">
+        <h2>14. Conclusion and Further Learning</h2>
+        
+        <h3 id="resources">14.1 Learning Resources</h3>
+        <div class="note">
+            <ul>
+                <li><strong>MDN Web Docs:</strong> The most comprehensive and accurate JavaScript reference</li>
+                <li><strong>Eloquent JavaScript:</strong> Free online book (eloquentjavascript.net)</li>
+                <li><strong>You Don't Know JS:</strong> Book series diving deep into JavaScript</li>
+                <li><strong>JavaScript.info:</strong> Modern JavaScript tutorial</li>
+                <li><strong>ECMAScript specification:</strong> For the most technical details</li>
+            </ul>
+        </div>
+
+        <h3 id="practice">14.2 Practice Platforms</h3>
+        <div class="note">
+            <ul>
+                <li><strong>Codewars:</strong> Coding challenges of varying difficulty</li>
+                <li><strong>LeetCode:</strong> Algorithm challenges, many with JavaScript solutions</li>
+                <li><strong>Frontend Mentor:</strong> Real-world frontend projects</li>
+                <li><strong>Exercism:</strong> JavaScript track with mentor feedback</li>
+                <li><strong>Scrimba:</strong> Interactive coding courses</li>
+            </ul>
+        </div>
+
+        <h3 id="next-steps">14.3 Next Steps</h3>
+        <div class="note">
+            <ul>
+                <li>Build projects to apply your knowledge</li>
+                <li>Contribute to open source projects</li>
+                <li>Learn TypeScript for type-safe JavaScript</li>
+                <li>Explore server-side JavaScript with Node.js</li>
+                <li>Stay updated with new ECMAScript proposals</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        // Generate table of contents
+        document.addEventListener('DOMContentLoaded', function() {
+            const toc = document.getElementById('toc');
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionId = section.id;
+                const sectionTitle = section.querySelector('h2').textContent;
+                
+                // Create section entry
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#${sectionId}`;
+                a.textContent = sectionTitle;
+                li.appendChild(a);
+                
+                // Create subsection entries
+                const subs = section.querySelectorAll('h3');
+                if (subs.length > 0) {
+                    const ul = document.createElement('ul');
+                    
+                    subs.forEach(sub => {
+                        const subLi = document.createElement('li');
+                        const subA = document.createElement('a');
+                        subA.href = `#${sub.id}`;
+                        subA.textContent = sub.textContent;
+                        subLi.appendChild(subA);
+                        ul.appendChild(subLi);
+                    });
+                    
+                    li.appendChild(ul);
+                }
+                
+                toc.appendChild(li);
+            });
+            
+            // Add syntax highlighting (would need to include a library like Prism.js)
+            // Add interactive examples
+            document.querySelectorAll('pre code').forEach(codeBlock => {
+                const button = document.createElement('button');
+                button.textContent = 'Run';
+                button.className = 'run-button';
+                button.onclick = function() {
+                    try {
+                        // Note: Using Function constructor is safer than eval
+                        const fn = new Function(codeBlock.textContent);
+                        const result = fn();
+                        if (result !== undefined) {
+                            console.log('Result:', result);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                };
+                
+                const div = document.createElement('div');
+                div.className = 'code-actions';
+                div.appendChild(button);
+                
+                codeBlock.parentNode.insertBefore(div, codeBlock);
+            });
+        });
+    </script>
+</body>
+</html>
